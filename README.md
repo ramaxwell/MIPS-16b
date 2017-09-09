@@ -11,87 +11,88 @@ That being said, I plan to update this design incrementally by fixing some of th
 *Note: Many of the modules have an excess of inputs and outputs which I left in for testing/debug and potential timing analysis purposes
      
 # File structure                    Description
-mips_16b_test1.v                    //Testbench
+	
+	mips_16b_test1.v                    //Testbench
 
-usage.txt                           //How to test with Icarus Verilog
+	usage.txt                           //How to test with Icarus Verilog
 
-file_list.txt                       //Used with Icarus Verilog command line
+	file_list.txt                       //Used with Icarus Verilog command line
 
 
-mips_16b.v					//parent
+	mips_16b.v                          //parent
 
--->stage1.v                         //IF stage
+	-->stage1.v                         //IF stage
 
--->instr_mem.v                   //Instruction Memory (hard coded)
+	-->instr_mem.v                      //Instruction Memory (hard coded)
    
-	-->Adder_32b.v                   //32 bit Ripple-carry adder
+		-->Adder_32b.v              //32 bit Ripple-carry adder
    
-		-->FA_4bit.v
+			-->FA_4bit.v
       
-		-->Add_Full.v
+			-->Add_Full.v
          
-		-->Add_Half.v
+			-->Add_Half.v
             
             
--->stage2.v                         //ID stage
+	-->stage2.v                              //ID stage
 
-	-->reg_file.v                    //Register file
+		-->reg_file.v                    //Register file
    
-	-->SEXT.v                        //Sign Extend
+		-->SEXT.v                        //Sign Extend
    
-	-->MIPS_Control.v                //MIPS controller
+		-->MIPS_Control.v                //MIPS controller
    
-	-->MUX2x1.v                      //2x1 MUX
+		-->MUX2x1.v                      //2x1 MUX
    
-	-->REG_compare.v                 //Register comparator
+		-->REG_compare.v                 //Register comparator
    
-	-->LSHF.v                        //32 bit Left shift
+		-->LSHF.v                        //32 bit Left shift
    
-	-->LSHF_26.v                     //26 bit left shift 
+		-->LSHF_26.v                     //26 bit left shift 
    
-	-->Adder_32b.v                   //32 bit Ripple-carry adder
+		-->Adder_32b.v                   //32 bit Ripple-carry adder
    
 
--->stage3.v                         //EX Stage
+	-->stage3.v                              //EX Stage
 
-	-->LSHF.v                        //Left shift
+		-->LSHF.v                        //Left shift
 	
-	-->MUX3x1.v                      //3x1 MUX (really just 2 cascaded 2x1 MUXes)
+		-->MUX3x1.v                      //3x1 MUX (really just 2 cascaded 2x1 MUXes)
+
+		-->MUX2x1.v                      //2x1 MUX
 	
-	-->MUX2x1.v                      //2x1 MUX
+		-->MUX2x1_5b.v                   //2x1 MUX with 5 bit throughput
 	
-	-->MUX2x1_5b.v                   //2x1 MUX with 5 bit throughput
-	
-	-->Adder_32b.v                   //32 bit Ripple-carry adder
+		-->Adder_32b.v                   //32 bit Ripple-carry adder
    
-	-->alu_16b.v                     //16 bit ALU
+		-->alu_16b.v                     //16 bit ALU
    
-		-->Add_Sub_xbits.v            //16 bit Ripple-carry Adder/Subtractor
+			-->Add_Sub_xbits.v       //16 bit Ripple-carry Adder/Subtractor
 	 
-		-->Full_Add_Sub.v
+			-->Full_Add_Sub.v
 	 
-			-->Half_Add.v
+				-->Half_Add.v
 	    
-	-->Xshifter.v                    //left or right cross shifter
+		-->Xshifter.v                    //left or right cross shifter
    
-	-->Xcompare.v                    //Comparator
+		-->Xcompare.v                    //Comparator
    
-	-->ANDX.v                        //Simple AND gate
+		-->ANDX.v                        //Simple AND gate
    
-	-->ORX.v                         //Simple OR gate
+		-->ORX.v                         //Simple OR gate
    
    
--->stage4.v                        //MEM stage
+	-->stage4.v                        //MEM stage
 
-	-->data_mem.v                   //Explicit Data Memory for "storing" results
+		-->data_mem.v              //Explicit Data Memory for "storing" results
    
    
--->Forwarding_Unit.v               //Unit for data forwarding control
+	-->Forwarding_Unit.v               //Unit for data forwarding control
 
 
--->stage5.v                        //WB stage
+	-->stage5.v                        //WB stage
 
-	-->MUX2x1.v                     //2x1 MUX
+		-->MUX2x1.v                //2x1 MUX
    
 
 *Note: More info on the design can be found in the power point document entitled '16 bit MIPS machine.pptx'
