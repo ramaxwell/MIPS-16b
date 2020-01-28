@@ -1,0 +1,66 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Tue Jan 28 18:23:17 2020
+[*]
+[dumpfile] "/mnt/834bacc0-f9f6-4206-a573-37e41106391c/verilog/mips_16b-UNFINISHED/dump.lx2"
+[dumpfile_mtime] "Tue Jan 28 18:11:24 2020"
+[dumpfile_size] 32534450
+[savefile] "/mnt/834bacc0-f9f6-4206-a573-37e41106391c/verilog/mips_16b-UNFINISHED/mips_16b_wave_file.gtkw"
+[timestart] 95140
+[size] 1229 901
+[pos] -1 -1
+*-12.000000 101000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mips_16b_test1.
+[sst_width] 223
+[signals_width] 182
+[sst_expanded] 1
+[sst_vpaned_height] 258
+@28
+mips_16b_test1.clk[0]
+mips_16b_test1.clk_en[0]
+@22
+mips_16b_test1.pc[31:0]
+mips_16b_test1.next_pc_if[31:0]
+mips_16b_test1.instr_if[31:0]
+@28
+mips_16b_test1.reg_write_id[0]
+mips_16b_test1.mem2reg_id[0]
+@22
+mips_16b_test1.branch_id[4:0]
+@28
+mips_16b_test1.mem_w_id[0]
+mips_16b_test1.mem_r_id[0]
+mips_16b_test1.reg_dst_id[0]
+mips_16b_test1.alu_src_id[0]
+@22
+mips_16b_test1.alu_op_id[3:0]
+mips_16b_test1.next_pc_id[31:0]
+mips_16b_test1.r_data1_id[31:0]
+mips_16b_test1.r_data2_id[31:0]
+mips_16b_test1.pc_offset_id[31:0]
+mips_16b_test1.dest1_id[4:0]
+mips_16b_test1.dest2_id[4:0]
+@28
+mips_16b_test1.reg_write_ex[0]
+mips_16b_test1.mem2reg_ex[0]
+@22
+mips_16b_test1.branch_ex[4:0]
+@28
+mips_16b_test1.mem_w_ex[0]
+mips_16b_test1.mem_r_ex[0]
+@22
+mips_16b_test1.offset_pc_ex[31:0]
+mips_16b_test1.cond_code_ex[5:0]
+mips_16b_test1.alu_out_ex[31:0]
+mips_16b_test1.reg_data2_ex[31:0]
+mips_16b_test1.dest_reg_ex[4:0]
+@28
+mips_16b_test1.reg_write_mem[0]
+mips_16b_test1.mem2reg_mem[0]
+@22
+mips_16b_test1.read_data_mem[31:0]
+mips_16b_test1.alu_out_mem[31:0]
+@23
+mips_16b_test1.dest_reg_mem[4:0]
+[pattern_trace] 1
+[pattern_trace] 0
