@@ -2,6 +2,6 @@
 
 $> iverilog -o mips_16b -c file_list.txt
 
-$> vvp mips_16b -lxt2
+$> vvp mips_16b -lx2
 
 $> gtkwave dump.lx2
