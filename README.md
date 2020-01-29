@@ -12,46 +12,46 @@ Instructions currently allowed:
 
 Arithmetic Ops
 ----------------------------------------------
-ADD		Rd, Rs, Rt			Rd = Rs + Rt
-ADDI	Rd, Rs, const16		Rd = Rs + const16
-ADDIU	Rd, Rs, const16		Rd = Rs + const16
-ADDU	Rd, Rs, Rt			Rd = Rs + Rt
-LUI		Rd, const16			Rd = const16 << 16
-SUB		Rd, Rs, Rt			Rd = Rs - Rt
-SUBU	Rd, Rs, Rt			Rd = Rs - Rt
++ ADD		Rd, Rs, Rt			Rd = Rs + Rt
++ ADDI		Rd, Rs, const16		Rd = Rs + const16
++ ADDIU	Rd, Rs, const16		Rd = Rs + const16
++ ADDU		Rd, Rs, Rt			Rd = Rs + Rt
++ LUI		Rd, const16			Rd = const16 << 16
++ SUB		Rd, Rs, Rt			Rd = Rs - Rt
++ SUBU		Rd, Rs, Rt			Rd = Rs - Rt
 
 Logical and Bitfield
 ---------------------------------------------
-AND		Rd, Rs, Rt			Rd = Rs & Rt
-ANDI	Rd, Rs, const16		Rd = Rs & const16
-NOP
-OR		Rd, Rs, Rt			Rd = Rs | Rt
-ORI		Rd, Rs, const16		Rd = Rs | const16
++ AND		Rd, Rs, Rt			Rd = Rs & Rt
++ ANDI		Rd, Rs, const16		Rd = Rs & const16
++ NOP
++ OR		Rd, Rs, Rt			Rd = Rs | Rt
++ ORI		Rd, Rs, const16		Rd = Rs | const16
 
 Conditionals
 ---------------------------------------------
-SLT		Rd, Rs, Rt			Rd = (Rd < Rt) ? 1 : 0
-SLTI	Rd, Rs, const16		Rd = (Rs < const16) ? 1 : 0
-SLTIU	Rd, Rs, const16		Rd = (Rs < const16) ? 1 : 0
-SLTU	Rd, Rs, Rt			Rd = (Rs < Rt) ? 1 : 0
++ SLT		Rd, Rs, Rt			Rd = (Rd < Rt) ? 1 : 0
++ SLTI		Rd, Rs, const16		Rd = (Rs < const16) ? 1 : 0
++ SLTIU		Rd, Rs, const16		Rd = (Rs < const16) ? 1 : 0
++ SLTU		Rd, Rs, Rt			Rd = (Rs < Rt) ? 1 : 0
 
 Shift Ops
 ---------------------------------------------
-SLL		Rd, Rs, shift5		Rd = Rs << shift5
-SRL		Rd, Rs, shift5		Rd = Rs >> shift5
++ SLL		Rd, Rs, shift5		Rd = Rs << shift5
++ SRL		Rd, Rs, shift5		Rd = Rs >> shift5
 
 Load/Store Ops
 ---------------------------------------------
-LW		Rd, OFF16(Rs)		Rd = MEM32(Rs + OFF16)
-SW		Rs, OFF16(Rt)		MEM32(Rt + OFF16) = Rs
++ LW		Rd, OFF16(Rs)		Rd = MEM32(Rs + OFF16)
++ SW		Rs, OFF16(Rt)		MEM32(Rt + OFF16) = Rs
 
 Jumps and Branches
 ---------------------------------------------
-BEQ		Rs, Rt, OFF18		If Rs = Rt, PC += OFF18
-BEQZ	Rs, OFF18			if Rs = 0, PC += OFF18
-BGTZ	Rs, OFF18			If Rs > 0, PC += OFF18
-BLTZ	Rs, OFF18			If Rs < 0, PC += OFF18
-BNE		Rs, Rt, OFF18		If Rs != Rt, PC += OFF18
++ BEQ		Rs, Rt, OFF18		If Rs = Rt, PC += OFF18
++ BEQZ		Rs, OFF18			if Rs = 0, PC += OFF18
++ BGTZ		Rs, OFF18			If Rs > 0, PC += OFF18
++ BLTZ		Rs, OFF18			If Rs < 0, PC += OFF18
++ BNE		Rs, Rt, OFF18		If Rs != Rt, PC += OFF18
 
 
 *Note: Many of the modules have an excess of inputs and outputs which I left in for testing/debug and potential timing analysis purposes
