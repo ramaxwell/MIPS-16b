@@ -12,7 +12,7 @@ Instructions currently allowed:
 
 Arithmetic Ops
 ----------------------------------------------
-+ ADD		Rd, Rs, Rt			Rd = Rs + Rt
++ ADD		'Rd, Rs, Rt			Rd = Rs + Rt'
 + ADDI		Rd, Rs, const16		Rd = Rs + const16
 + ADDIU	Rd, Rs, const16		Rd = Rs + const16
 + ADDU		Rd, Rs, Rt			Rd = Rs + Rt
