@@ -24,11 +24,13 @@ Arithmetic Ops
 
 Logical and Bitfield
 ---------------------------------------------
-+ AND		Rd, Rs, Rt			Rd = Rs & Rt
-+ ANDI		Rd, Rs, const16		Rd = Rs & const16
-+ NOP
-+ OR		Rd, Rs, Rt			Rd = Rs | Rt
-+ ORI		Rd, Rs, const16		Rd = Rs | const16
+| OP  | Syntax  | Equivalent |
+|-----|---------|------------|
+| AND  | Rd, Rs, Rt	|		Rd = Rs & Rt |
+| ANDI | Rd, Rs, const16 |		Rd = Rs & const16 |
+| NOP  |       |			|
+| OR   | Rd, Rs, Rt |			Rd = Rs | Rt |
+| ORI  | Rd, Rs, const16 |		Rd = Rs | const16 |
 
 Conditionals
 ---------------------------------------------
