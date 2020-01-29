@@ -12,13 +12,14 @@ Instructions currently allowed:
 
 Arithmetic Ops
 ----------------------------------------------
-+ ADD		'Rd, Rs, Rt			Rd = Rs + Rt'
-+ ADDI		Rd, Rs, const16		Rd = Rs + const16
-+ ADDIU	Rd, Rs, const16		Rd = Rs + const16
-+ ADDU		Rd, Rs, Rt			Rd = Rs + Rt
-+ LUI		Rd, const16			Rd = const16 << 16
-+ SUB		Rd, Rs, Rt			Rd = Rs - Rt
-+ SUBU		Rd, Rs, Rt			Rd = Rs - Rt
+|   |   |   |
+| ADD | Rd, Rs, Rt | Rd = Rs + Rt |
+| ADDI | Rd, Rs, const16 | Rd = Rs + const16 |
+| ADDIU | Rd, Rs, const16 | Rd = Rs + const16 |
+| ADDU | Rd, Rs, Rt | Rd = Rs + Rt |
+| LUI | Rd, const16 | Rd = const16 << 16 |
+| SUB | Rd, Rs, Rt | Rd = Rs - Rt |
+| SUBU | Rd, Rs, Rt | Rd = Rs - Rt |
 
 Logical and Bitfield
 ---------------------------------------------
