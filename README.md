@@ -10,7 +10,7 @@ That being said, I plan to update this design incrementally by fixing some of th
 
 Instructions currently allowed:
 
-##Arithmetic Ops
+## Arithmetic Ops
 
 | OP  | Syntax  | Equivalent |
 |-----|---------|------------|
@@ -22,7 +22,7 @@ Instructions currently allowed:
 | SUB | Rd, Rs, Rt | Rd = Rs - Rt |
 | SUBU | Rd, Rs, Rt | Rd = Rs - Rt |
 
-##Logical and Bitfield
+## Logical and Bitfield
 
 | OP  | Syntax  | Equivalent |
 |-----|---------|------------|
@@ -32,7 +32,7 @@ Instructions currently allowed:
 | OR   | Rd, Rs, Rt |			Rd = Rs | Rt |
 | ORI  | Rd, Rs, const16 |		Rd = Rs | const16 |
 
-##Conditionals
+## Conditionals
 
 | OP  | Syntax  | Equivalent |
 |-----|---------|------------|
@@ -41,21 +41,21 @@ Instructions currently allowed:
 | SLTIU	|	Rd, Rs, const16	|	Rd = (Rs < const16) ? 1 : 0 |
 | SLTU	|	Rd, Rs, Rt		|	Rd = (Rs < Rt) ? 1 : 0 |
 
-##Shift Ops
+## Shift Ops
 
 | OP  | Syntax  | Equivalent |
 |-----|---------|------------|
 | SLL	|	Rd, Rs, shift5	|	Rd = Rs << shift5 |
 | SRL	|	Rd, Rs, shift5	|	Rd = Rs >> shift5 |
 
-##Load/Store Ops
+## Load/Store Ops
 
 | OP  | Syntax  | Equivalent |
 |-----|---------|------------|
 | LW	|	Rd, OFF16(Rs)	|	Rd = MEM32(Rs + OFF16) |
 | SW	|	Rs, OFF16(Rt)	|	MEM32(Rt + OFF16) = Rs |
 
-##Jumps and Branches
+## Jumps and Branches
 
 | OP  | Syntax  | Equivalent |
 |-----|---------|------------|
