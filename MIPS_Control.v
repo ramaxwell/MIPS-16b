@@ -1,23 +1,25 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer:    Robert A. Maxwell
 // 
 // Create Date:    13:17:57 11/21/2011 
-// Design Name: 
-// Module Name:    MIPS_Control 
-// Project Name: 
+// Design Name:     Controller for MIPS Machine
+// Module Name:     MIPS_Control 
+// Project Name:    MIPS 16 bit Processor
 // Target Devices: 
 // Tool versions: 
 // Description: 
+//              Controller for driving wires (and muxes by extension)
 //
-// Dependencies: 
+// Dependencies: N/A
 //
 // Revision: 
 // Revision 0.01 - File Created
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 module MIPS_Control(rw_ctrl, alu_source, alu_opcode, register_dst, br_eq, br_ne, br_gt, br_gt_eq_z, br_lt, j,
 				mem_write, mem_read, mem_2_reg, clk_off, instr_code, alu_funct);			
 				

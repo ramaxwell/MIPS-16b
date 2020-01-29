@@ -1,17 +1,20 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer:    Robert A. Maxwell
 // 
 // Create Date:    14:02:12 11/16/2011 
-// Design Name: 
-// Module Name:    stage3 
-// Project Name: 
+// Design Name:     Execute Stage (EX)
+// Module Name:     stage3 
+// Project Name:    MIPS 16 bit Processor
 // Target Devices: 
 // Tool versions: 
 // Description: 
+//                  Execute stage of 5 stage pipeline
 //
-// Dependencies: 
+// Dependencies:    Left shift (LSHF.v), 3 by 1 MUX (MUX3x1.v),
+//                  2 x 1 MUX (MUX2x1.v), 5bit 2x1 MUX (MUX2x1_5b.v),
+//                  32bit RC Adder (Adder_32b.v), 16 bit ALU (alu_16b.v)
 //
 // Revision: 
 // Revision 0.01 - File Created
@@ -64,3 +67,4 @@ module stage3(offset_out, cond_codes, alu_out, regData2_out, dest_reg_out, p_cou
 	alu_16b alu(alu_out, cond_codes, forwd_mux1_out, alu_ip2, alu_ctrl);				
 				//alu_16b(alu_out, cond_code, inA, inB, alu_ctrl);
 endmodule
+

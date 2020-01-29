@@ -1,17 +1,20 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer:    Robert A. Maxwell
 // 
 // Create Date:    15:59:53 11/28/2011 
-// Design Name: 
-// Module Name:    Forwarding_Unit 
-// Project Name: 
+// Design Name:     Data Forwarding Control Unit
+// Module Name:     Forwarding_Unit 
+// Project Name:    MIPS 16 bit Processor
 // Target Devices: 
 // Tool versions: 
 // Description: 
+//              Control Unit for forwarding data from MEM (Stage 4) or
+//          WB (stage 5) to ALU (EX stage 3) to cut back on data stalls or
+//          hazards
 //
-// Dependencies: 
+// Dependencies:    N/A
 //
 // Revision: 
 // Revision 0.01 - File Created

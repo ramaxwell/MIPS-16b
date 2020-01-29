@@ -1,17 +1,19 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer:    Robert A. Maxwell
 // 
 // Create Date:    14:08:30 07/27/2011 
-// Design Name: 
-// Module Name:    Full_Add_Sub 
-// Project Name: 
+// Design Name:     1-bit Full Add/Subtract
+// Module Name:     Full_Add_Sub 
+// Project Name:    MIPS 16 bit Processor
 // Target Devices: 
 // Tool versions: 
 // Description: 
+//                  Adder/Subtractor controlled by XOR gate
+//                  (0: Adder, 1: Subtractor)
 //
-// Dependencies: 
+// Dependencies:    Half Adder (Half_Add.v)
 //
 // Revision: 
 // Revision 0.01 - File Created

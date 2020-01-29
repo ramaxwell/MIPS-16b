@@ -1,17 +1,18 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: UTSA
-// Engineer: Robert A. Maxwell
+// Company:  
+// Engineer:    Robert A. Maxwell
 // 
 // Create Date:    14:57:42 06/07/2011 
-// Design Name: 	4-Bit Full Adder using 4 1-bit Full Adders
+// Design Name:    4-Bit Full Adder
 // Module Name:    FA_4bit 
-// Project Name: 4-bit Full Adder
-// Target Devices: Spartan 3E Starter Board
+// Project Name:   MIPS 16 bit Processor
+// Target Devices:
 // Tool versions: 
-// Description: 4-Bit Full Adder using 4 1-bit Full Adders
+// Description: 
+//              4-Bit Full Adder using 4 1-bit Full Adders
 //
-// Dependencies: 1-Bit Full Adder (Add_Full.v), Half Adder (Add_Half.v)
+// Dependencies: 1-Bit Full Adder (Add_Full.v)
 //
 // Revision: 
 // Revision 0.01 - File Created
