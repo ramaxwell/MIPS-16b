@@ -12,7 +12,8 @@ Instructions currently allowed:
 
 Arithmetic Ops
 ----------------------------------------------
-|   |   |   |
+| OP  | Syntax  | Equivalent |
+|-----|---------|------------|
 | ADD | Rd, Rs, Rt | Rd = Rs + Rt |
 | ADDI | Rd, Rs, const16 | Rd = Rs + const16 |
 | ADDIU | Rd, Rs, const16 | Rd = Rs + const16 |
