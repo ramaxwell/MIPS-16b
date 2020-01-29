@@ -18,9 +18,13 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module mips_16b(clk, clk_en, reset, next_pc_if, instr_if, reg_write_id, mem2reg_id, branch_id, mem_w_id, mem_r_id, reg_dst_id, alu_src_id, alu_op_id, next_pc_id, r_data1_id, r_data2_id, pc_offset_id, dest1_id, dest2_id, source1_id, reg_write_ex, mem2reg_ex, branch_ex, mem_w_ex, mem_r_ex, offset_pc_ex, cond_code_ex, alu_out_ex, reg_data2_ex, dest_reg_ex, reg_write_mem, mem2reg_mem, read_data_mem, alu_out_mem, dest_reg_mem, pc, cycle_count, instr_count, load_stall_count, branch_stall_count);
+module mips_16b(clk, clk_en, reset, next_pc_if, instr_if, reg_write_id, mem2reg_id, branch_id, mem_w_id, mem_r_id, 
+		reg_dst_id, alu_src_id, alu_op_id, next_pc_id, r_data1_id, r_data2_id, pc_offset_id, dest1_id, 
+		dest2_id, source1_id, reg_write_ex, mem2reg_ex, branch_ex, mem_w_ex, mem_r_ex, offset_pc_ex, 
+		cond_code_ex, alu_out_ex, reg_data2_ex, dest_reg_ex, reg_write_mem, mem2reg_mem, read_data_mem, 
+		alu_out_mem, dest_reg_mem, pc, cycle_count, instr_count, load_stall_count, branch_stall_count);
 		
-	input					clk, clk_en, reset;		
+	input				clk, clk_en, reset;		
 		
 //******************//		
 //Pipeline registers//
@@ -29,59 +33,59 @@ module mips_16b(clk, clk_en, reset, next_pc_if, instr_if, reg_write_id, mem2reg_
 	output reg	[31:0]		next_pc_if, instr_if;		
 																	//still need entire pipeline of regs for jump operation
 	//	ID/EX register
-	output reg				reg_write_id, mem2reg_id;			// control registers				
+	output reg			reg_write_id, mem2reg_id;		// control registers				
 	output reg	[4:0]		branch_id;
-	output reg				mem_w_id, mem_r_id;	//
-	output reg				reg_dst_id, alu_src_id;
+	output reg			mem_w_id, mem_r_id;			//
+	output reg			reg_dst_id, alu_src_id;
 	output reg	[3:0]		alu_op_id;
 	
-	output reg	[31:0]		next_pc_id;								//datapath registers
-	output reg	[31:0]		r_data1_id, r_data2_id;				//
+	output reg	[31:0]		next_pc_id;				//datapath registers
+	output reg	[31:0]		r_data1_id, r_data2_id;			//
 	output reg	[31:0]		pc_offset_id;
 	output reg	[4:0]		dest1_id, dest2_id;
 	output reg	[4:0]		source1_id;
 	
 	// EX/MEM register
-	output reg				reg_write_ex, mem2reg_ex;			// control registers	
+	output reg			reg_write_ex, mem2reg_ex;		// control registers	
 	output reg	[4:0]		branch_ex;
-	output reg				mem_w_ex, mem_r_ex;
+	output reg			mem_w_ex, mem_r_ex;
 	
-	output reg	[31:0]		offset_pc_ex;							//datapath registers
+	output reg	[31:0]		offset_pc_ex;				//datapath registers
 	output reg	[5:0]		cond_code_ex;
 	output reg	[31:0]		alu_out_ex;
 	output reg	[31:0]		reg_data2_ex;
 	output reg	[4:0]		dest_reg_ex;
 	
 	// MEM/WB register
-	output reg				reg_write_mem, mem2reg_mem;		// control registers	
+	output reg			reg_write_mem, mem2reg_mem;		// control registers	
 	
 	output reg	[31:0]		read_data_mem, alu_out_mem;		//datapath registers
 	output reg	[4:0]		dest_reg_mem;
 	//end of pipline registers
 	
 	
-	output reg		[31:0]	pc;			//want pc <= pc_val (posedge clk)
+	output reg	[31:0]		pc;			//want pc <= pc_val (posedge clk)
 	
-	output reg		[31:0]	cycle_count;						//performance counters
-	output reg		[31:0]	instr_count;						//
-	output reg		[31:0]  load_stall_count;					//
-	output reg		[31:0]	branch_stall_count;					//
+	output reg	[31:0]		cycle_count;		//performance counters
+	output reg	[31:0]		instr_count;		//
+	output reg	[31:0]		load_stall_count;	//
+	output reg	[31:0]		branch_stall_count;	//
 	
 	initial begin
 		pc = 32'h00000000;
 	end
 	
 	//uppper level wires
-	wire		[31:0]	pc_val;		//wire that feeds PC
-	wire		[31:0]	next_pc;		//post incremented PC
+	wire		[31:0]	pc_val;				//wire that feeds PC
+	wire		[31:0]	next_pc;			//post incremented PC
 	wire		[31:0]	full_instr;
 	wire		[31:0]	jump_addr;
-	wire				jmp;
+	wire			jmp;
 	wire		[31:0]	pc_addr_mux_out;
 	wire		[1:0]	forwarding_mux1_ctrl, forwarding_mux2_ctrl;
-	wire				clockOFF;		//clock cutoff signal
-	wire				clock;
-	reg					clock_enable;
+	wire			clockOFF;			//clock cutoff signal
+	wire			clock;
+	reg			clock_enable;
 	
 	//stage 2 wires		
 	wire		[4:0]	source1_wire, source_wire, dest_wire;	
@@ -89,12 +93,12 @@ module mips_16b(clk, clk_en, reset, next_pc_if, instr_if, reg_write_id, mem2reg_
 	wire		[31:0]	RFread_data1_wire, RFread_data2_wire;
 	wire		[31:0]	next_pc_id_wire;
 	
-	wire				reg_rw_wire, alu_src_wire, reg_dest_wire;
+	wire			reg_rw_wire, alu_src_wire, reg_dest_wire;
 	wire		[3:0]	alu_op_wire;
 	wire		[4:0]	branch_wire;
-	wire				mem_w_wire, mem_r_wire, mem2reg_wire;
+	wire			mem_w_wire, mem_r_wire, mem2reg_wire;
 	
-	wire				pc_src_wire;
+	wire			pc_src_wire;
 	wire		[31:0]	addr_offset_wire;
 	
 	//stage 3 wires
@@ -104,14 +108,14 @@ module mips_16b(clk, clk_en, reset, next_pc_if, instr_if, reg_write_id, mem2reg_
 	wire		[31:0]	reg_data2_wire;
 	wire		[4:0]	dest_reg_wire;
 	//stage 4 wires
-	wire				reg_write_ex_wire, mem2reg_ex_wire;
+	wire			reg_write_ex_wire, mem2reg_ex_wire;
 	wire		[4:0]	branch_ex_wire;
-	wire				mem_w_ex_wire, mem_r_ex_wire;
+	wire			mem_w_ex_wire, mem_r_ex_wire;
 	
 	wire		[4:0]	reg_dest_mem_wire;
 	wire		[31:0]	rw_addr_mem_wire;
 	wire		[31:0]	mem_data_wire;
-	wire				reg_write_mem_wire, mem2reg_mem_wire;
+	wire			reg_write_mem_wire, mem2reg_mem_wire;
 	
 	//stage 5 wires
 	wire		[31:0]	rf_w_data;
@@ -120,28 +124,28 @@ module mips_16b(clk, clk_en, reset, next_pc_if, instr_if, reg_write_id, mem2reg_
 	//no more wires
 	
 	initial begin
-			cycle_count = 32'h00000000;						//initialize performance counters
-			instr_count = 32'h00000000;						//
-			load_stall_count = 32'h00000000;				//
-			branch_stall_count = 32'h00000000;
-			clock_enable = 1'b0;
+		cycle_count = 32'h00000000;			//initialize performance counters
+		instr_count = 32'h00000000;			//
+		load_stall_count = 32'h00000000;		//
+		branch_stall_count = 32'h00000000;
+		clock_enable = 1'b0;
 	end
 	
 //PC address mux			
 assign pc_addr_mux_out = (pc_src_wire)? addr_offset_wire: next_pc;			
 //jump mux
 assign pc_val = jmp? jump_addr: pc_addr_mux_out;
-			
+	//output,   output, input	
 stage1 IF(full_instr, next_pc, pc);
-			//output,	 output, input
+			
 
 stage2 ID(RFread_data1_wire, RFread_data2_wire, immed16_wire, source1_wire, source_wire, dest_wire, reg_rw_wire,
 			alu_src_wire, alu_op_wire, reg_dest_wire, branch_wire, jmp, mem_w_wire, mem_r_wire,
 			mem2reg_wire, next_pc_id_wire, pc_src_wire, addr_offset_wire, jump_addr, clockOFF, rf_w_data, 				rf_w_addr, instr_if, next_pc_if, reg_write_mem);
 
-/*stage2(	rf_read_data1, 	rf_read_data2, 	sext_out, 		src2_out, 	dest_out, 	rw_control, 
-				alu_src, 	alu_op, 		reg_dst, 			bra, 			jmp_wire, mem_w, 		mem_r, 
-				mem2reg, 	pc_next, 		pc_source, 		offset_addr,		jump_addr, rf_w_data, rf_w_addr ,inst_code, next_pc, reg_rw_control); */
+/*stage2(	rf_read_data1, 	rf_read_data2, 	sext_out, 	src2_out, 	dest_out, 	rw_control, 
+				alu_src, 	alu_op, 	reg_dst,	bra,	jmp_wire, mem_w,	mem_r, 
+	mem2reg, pc_next, pc_source, offset_addr,jump_addr, rf_w_data, rf_w_addr ,inst_code, next_pc, reg_rw_control); */
 
 stage3 EX(offset_ex_wire, cond_code_wire, alu_out_ex_wire, reg_data2_wire, dest_reg_wire, next_pc_id, 
 				pc_offset_id, r_data1_id, r_data2_id, alu_op_id, dest1_id, dest2_id, alu_src_id, reg_dst_id,	
@@ -152,18 +156,20 @@ stage3 EX(offset_ex_wire, cond_code_wire, alu_out_ex_wire, reg_data2_wire, dest_
 
 stage4 MEM(mem_data_wire, rw_addr_mem_wire, reg_dest_mem_wire, cond_code_ex, alu_out_ex, reg_data2_ex, 
 			dest_reg_ex, branch_ex, mem_w_ex, mem_r_ex);
-	//stage4(data_wire, 		rw_addr_wire,	 register_dest,   alu_cond_code,   rw_addr,   write_data,    reg_dest,   branch_ctrl, write_sig, read_sig);
-	//			output				output			output				input				input			input				input			input			 input		input
+//stage4(data_wire, 		rw_addr_wire,	 register_dest,   alu_cond_code,   rw_addr,   write_data,    reg_dest,  
+				//	branch_ctrl, write_sig, read_sig);
+//	output			output		 output		input			input	input		input	
+				//input		input		input
 
 //***************//
 //Forwarding unit//
 //***************//
 Forwarding_Unit forward(forwarding_mux1_ctrl, forwarding_mux2_ctrl, dest1_id, source1_id, dest_reg_mem, 
-								dest_reg_ex, mem2reg_mem, branch_ex);
+			dest_reg_ex, mem2reg_mem, branch_ex);
 //	(f__mux1_ctrl, f_mux2_ctrl, id_ex_src2,id_ex_src1, wb_dest_reg, mem_dest_reg, wb_mem2reg, ex_mem_branch);
 
 stage5 WB(rf_w_data, rf_w_addr, read_data_mem, alu_out_mem, mem2reg_mem, dest_reg_mem);
-			//output, 	output,  	input, 			input, 		input, 			input
+	//output,	output,	input,		input,		input,	input
 
 assign		reg_write_ex_wire = reg_write_id;
 assign		mem2reg_ex_wire = mem2reg_id;
@@ -183,7 +189,7 @@ and(clock, clk, clock_enable);
 		if(reset)begin
 
 		//IF stage
-			pc <= 0;	next_pc_if<=0; instr_if<=0;
+			pc <= 0; next_pc_if<=0; instr_if<=0;
 
 		//ID Stage
 						//reset control registers
@@ -195,7 +201,7 @@ and(clock, clk, clock_enable);
 
 		//EX Stage
 						//reset control registers
-			reg_write_ex <= 0; mem2reg_ex <= 0;	branch_ex <= 0; mem_w_ex <= 0; mem_r_ex <= 0;				
+			reg_write_ex <= 0; mem2reg_ex <= 0; branch_ex <= 0; mem_w_ex <= 0; mem_r_ex <= 0;				
 						//reset datapath registers
 			offset_pc_ex <= 0; cond_code_ex <= 0; alu_out_ex <= 0; reg_data2_ex <= 0; dest_reg_ex <= 0;
 
@@ -268,13 +274,13 @@ and(clock, clk, clock_enable);
 	//**************//
 	always@(posedge clock) begin
 	
-		reg_write_ex <= reg_write_ex_wire;					// update control registers
-		mem2reg_ex <= mem2reg_ex_wire;						//just wires conntecting between registers
+		reg_write_ex <= reg_write_ex_wire;	// update control registers
+		mem2reg_ex <= mem2reg_ex_wire;		//just wires conntecting between registers
 		branch_ex <= branch_ex_wire;
 		mem_w_ex <= mem_w_ex_wire;
 		mem_r_ex <= mem_r_ex_wire;
 	
-		offset_pc_ex <= offset_ex_wire;							//update datapath registers
+		offset_pc_ex <= offset_ex_wire;		//update datapath registers
 		cond_code_ex <= cond_code_wire;
 		alu_out_ex <= alu_out_ex_wire;
 		reg_data2_ex <= reg_data2_wire;
@@ -288,10 +294,10 @@ and(clock, clk, clock_enable);
 	always@(posedge clock) begin
 	
 		reg_write_mem <= reg_write_mem_wire;
-		mem2reg_mem <= mem2reg_mem_wire;				// update control registers	
+		mem2reg_mem <= mem2reg_mem_wire;	// update control registers	
 	
 		read_data_mem <= mem_data_wire;
-		alu_out_mem <= rw_addr_mem_wire;				//update datapath registers
+		alu_out_mem <= rw_addr_mem_wire;	//update datapath registers
 		dest_reg_mem <= reg_dest_mem_wire;
 	
 	end
