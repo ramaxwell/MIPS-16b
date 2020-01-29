@@ -19,7 +19,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
+
 module MIPS_Control(rw_ctrl, alu_source, alu_opcode, register_dst, br_eq, br_ne, br_gt, br_gt_eq_z, br_lt, j,
 				mem_write, mem_read, mem_2_reg, clk_off, instr_code, alu_funct);			
 				
